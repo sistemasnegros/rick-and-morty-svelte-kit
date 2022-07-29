@@ -7,10 +7,14 @@
 	import LoginForm from '../components/forms/login.component.svelte';
 	import { UsersServiceIns } from '../services/users/users.service';
 	import { authStore } from '../store/auth';
+	import { goto } from '$app/navigation';
+	import { URL_FRONT } from '../const/url';
 
 	const submit = async (formFields: { username: string; password: string }) => {
 		const user = await UsersServiceIns.login(formFields);
 		authStore.login(user);
+		window.localStorage.setItem('user', JSON.stringify(user));
+		goto(URL_FRONT.rickAndMorty.characters);
 	};
 </script>
 

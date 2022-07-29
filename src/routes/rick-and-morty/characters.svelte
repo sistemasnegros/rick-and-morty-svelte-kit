@@ -1,6 +1,32 @@
 <script context="module" lang="ts">
-	import { authGuard } from '../lib/guard/guard';
-	export const load = async ({ url }: any) => authGuard(url);
+	import type { LoadEvent } from '@sveltejs/kit';
+	import { authGuard } from '$lib/guard/guard';
+	export const load = async ({ url, fetch, params }: LoadEvent) => {
+		const guard = authGuard(url);
+
+		const page = url.searchParams.get('page') || 1;
+		const name = url.searchParams.get('name');
+		const status = url.searchParams.get('status');
+
+		// if route is private
+		/* if (guard.status === 302) { */
+		/* 	return guard; */
+		/* } */
+
+		let characters = await RickAndMortyServiceIns.findCharacter(
+			{ page, name, status },
+			{ fetch }
+		).then((result) => result);
+
+		return {
+			/* ...guard, */
+			props: {
+				characters,
+				currentPage: +page,
+				searchFields: { name, status }
+			}
+		};
+	};
 </script>
 
 <script lang="ts">
@@ -9,20 +35,34 @@
 	import Spinner from '../../components/spinners/spinner.component.svelte';
 	import SearchForm from '../../components/forms/search.component.svelte';
 	import Paginator from '../../components/paginator/paginator.component.svelte';
+	import { goto } from '$app/navigation';
+	import { URL_FRONT } from '../../const/url';
+	import { page as pageStore } from '$app/stores';
 
-	let characters = RickAndMortyServiceIns.findCharacter({ page: 1 }).then((result) => result);
-	let searchFields = {};
-	let currentPage = 1;
+	/* let characters = RickAndMortyServiceIns.findCharacter({ page: 1 }).then((result) => result); */
+	export let characters: Promise<any>;
+	export let searchFields = {};
+	export let currentPage = 1;
 
 	const submit = async (fields: any) => {
+		// ssr
+		const url = $pageStore.url;
+		url.searchParams.set('page', `1`);
+		url.searchParams.set('name', fields.name);
+		url.searchParams.set('status', fields.status);
+		await goto(url, { keepfocus: true, noscroll: true });
+		// spa
 		characters = await RickAndMortyServiceIns.findCharacter(fields);
 		searchFields = fields;
 		currentPage = 1;
-		/* console.log('busqueda', characters); */
 	};
 
 	const numberPageOnClick = async (page: number) => {
-		/* console.log('click page', page); */
+		// ssr
+		const url = $pageStore.url;
+		url.searchParams.set('page', `${page}`);
+		await goto(url, { keepfocus: true, noscroll: true });
+		// spa
 		characters = await RickAndMortyServiceIns.findCharacter({ page, ...searchFields });
 		currentPage = page;
 	};

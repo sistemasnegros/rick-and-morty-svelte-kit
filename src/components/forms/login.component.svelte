@@ -1,8 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-
-	import { URL_FRONT } from '../../const/url';
-
 	export let submit: any;
 	let formStatus = {
 		isInvalid: false,
@@ -18,7 +14,6 @@
 		formStatus.isLoading = true;
 		await submit(formFields);
 		formStatus.isLoading = false;
-		goto(URL_FRONT.rickAndMorty.characters);
 	};
 
 	$: buttonText = formStatus.isLoading ? 'Please wait' : 'Login';

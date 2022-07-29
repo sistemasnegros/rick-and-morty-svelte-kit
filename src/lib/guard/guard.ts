@@ -6,18 +6,18 @@ import { authStore } from '../../store/auth';
 const isClient = typeof window !== 'undefined';
 
 export function authGuard({ pathname }: any): any {
-	const user = get(authStore);
-	const isLoggedIn = user.username;
+	const { user, auth } = get(authStore);
 
 	if (!isClient) {
 		return {};
 	}
 
-	if (isLoggedIn && pathname === URL_FRONT.login) {
+	if (auth && pathname === URL_FRONT.login) {
 		return { status: 302, redirect: URL_FRONT.root };
 	}
 
-	if (!isLoggedIn && pathname !== URL_FRONT.login) {
+	console.log('guard', user, pathname, auth);
+	if (!auth && pathname !== URL_FRONT.login) {
 		return { status: 302, redirect: URL_FRONT.login };
 	}
 

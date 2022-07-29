@@ -1,5 +1,5 @@
 {
-	"name": "svelte-kit-rick-and-morty",
+	"name": "rick-and-morty-svelte-kit",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "svelte-kit dev",

@@ -10,9 +10,14 @@
 	<img src="/dog.png" alt="" />
 </div>
 <h1>Svelte Kit Skeleton</h1>
+<h3>Routes publics with SSR</h3>
+<ul>
+	<li>Home</li>
+	<li>Login</li>
+	<li>Characteres</li>
+</ul>
 <h3>Please login to view private routes</h3>
 <ul>
-	<li>Characteres</li>
 	<li>Episodes</li>
 	<li>Locations</li>
 </ul>

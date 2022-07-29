@@ -6,6 +6,8 @@ export const URL_FRONT = {
 	login: root + 'login',
 	rickAndMorty: {
 		root: `${rickAndMortyRoot}`,
-		characters: `${rickAndMortyRoot}/characters`
+		characters: `${rickAndMortyRoot}/characters`,
+		episodes: `${rickAndMortyRoot}/episodes`,
+		locations: `${rickAndMortyRoot}/locations`
 	}
 };
