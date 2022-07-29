@@ -20,8 +20,8 @@ const config = {
 		adapter: adapter({
 			// default options are shown
 			pages: 'docs',
-			assets: 'docs'
-			// fallback: true
+			assets: 'docs',
+			fallback: null
 			// precompress: false
 		}),
 		// trailingSlash: 'always',
@@ -30,7 +30,7 @@ const config = {
 		},
 		paths: {
 			// YOUR github repository name
-			base: dev ? '' : '/rick-and-morty-svelte-kit'
+			base: !dev ? '' : '/rick-and-morty-svelte-kit'
 			// assets: dev ? '' : '/rick-and-morty-svelte-kit'
 		}
 	}
