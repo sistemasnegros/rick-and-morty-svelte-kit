@@ -13,7 +13,7 @@
 	const submit = async (formFields: { username: string; password: string }) => {
 		const user = await UsersServiceIns.login(formFields);
 		authStore.login(user);
-		window.localStorage.setItem('user', JSON.stringify(user));
+		/* window.localStorage.setItem('user', JSON.stringify(user)); */
 		goto(URL_FRONT.rickAndMorty.characters);
 	};
 </script>

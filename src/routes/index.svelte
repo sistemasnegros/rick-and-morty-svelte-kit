@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assets } from '$app/paths';
 </script>
 
 <svelte:head>
@@ -6,8 +7,8 @@
 </svelte:head>
 
 <div>
-	<img src="/rick_and_morty.webp" alt="" />
-	<img src="/dog.png" alt="" />
+	<img src={`${assets}/rick_and_morty.webp`} alt="" />
+	<img src={`${assets}/dog.png`} alt="" />
 </div>
 <h1>Svelte Kit Skeleton</h1>
 <h3>Routes publics with SSR</h3>

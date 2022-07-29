@@ -16,7 +16,6 @@ export function authGuard({ pathname }: any): any {
 		return { status: 302, redirect: URL_FRONT.root };
 	}
 
-	console.log('guard', user, pathname, auth);
 	if (!auth && pathname !== URL_FRONT.login) {
 		return { status: 302, redirect: URL_FRONT.login };
 	}
