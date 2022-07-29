@@ -1,0 +1,1 @@
+import{R as i}from"./index-9f470294.js";import{U as r,a as u}from"./auth-28c57a3d.js";const n=typeof window!="undefined";function f({pathname:t}){const{user:e,auth:o}=i(u);return n?o&&t===r.login?{status:302,redirect:r.root}:(console.log("guard",e,t,o),!o&&t!==r.login?{status:302,redirect:r.login}:{}):{}}export{f as a};
