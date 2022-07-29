@@ -35,10 +35,10 @@
 This project serves as a skeleton for a scalable application with Svelte Kit, as it has a basic implementation of the following:
 
 - Enabled SSR
-- Public Routes 
+- Public Routes
 - Private Routes (guardians)
 - Login
-- Form Search 
+- Form Search
 - Responsive
 - Stores
 - Props
@@ -94,8 +94,6 @@ You can preview the production build with `npm run preview`.
 
 - [@sistemasnegros](https://github.com/sistemasnegros) - Idea & Initial work
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
-
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
-- thanks to [rickandmortyapi.com](https://rickandmortyapi.com/) 
+- thanks to [rickandmortyapi.com](https://rickandmortyapi.com/)
